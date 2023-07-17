@@ -28,9 +28,9 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="{{ route('product.index') }}">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">My Store</span>
+					<span class="text">Product</span>
 				</a>
 			</li>
 			<li>
@@ -110,10 +110,7 @@
 						</li>
 					</ul>
 				</div>
-				<a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text">Download PDF</span>
-				</a>
+				
 			</div>
 
 			<ul class="box-info">
