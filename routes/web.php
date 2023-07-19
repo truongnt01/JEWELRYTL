@@ -30,7 +30,15 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('/product', ProductsController::class);
-Route::get('/admin', function () {
-    return view('Admin-1.index');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin', function () {
+        return view('Admin-1.index');
+    });
+    Route::resource('/product', ProductsController::class);
+});
+
+Route::middleware(['auth','role'])->group(function (){
+    Route::get('/user', function (){
+        return view('dashboard');
+    });
 });
