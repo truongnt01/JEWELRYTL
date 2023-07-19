@@ -35,9 +35,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('Admin-1.index');
     });
     Route::resource('/product', ProductsController::class);
+   
 });
 
-Route::middleware(['auth','role'])->group(function (){
+Route::middleware(['auth','role:user'])->group(function (){
     Route::get('/user', function (){
         return view('dashboard');
     });

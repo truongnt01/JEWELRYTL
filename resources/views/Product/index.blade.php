@@ -24,6 +24,7 @@ table {
   tbody tr:hover {
     background-color: #e6e6e6;
   }
+  
   img {
         max-width: 100px;
         height: auto;
@@ -69,7 +70,11 @@ table {
                         <td>{{ $value->description }}</td>
                         <td>${{ $value->price }}</td>
                         <td>
-                            <a href="">DELETE</a>
+                              <form class="my-form" action="{{ route('product.destroy', $value) }}" method="post">
+                              @csrf
+                              @method('delete')
+                              <button>Delete</button>
+                              </form>
 
                             <a href="{{ route('product.edit', $value) }}">CHANGE</a>
                         </td>
