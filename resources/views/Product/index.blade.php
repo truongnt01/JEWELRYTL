@@ -70,10 +70,13 @@ table {
                         <td>{{ $value->description }}</td>
                         <td>${{ $value->price }}</td>
                         <td>
-                              <form class="my-form" action="{{ route('product.destroy', $value) }}" method="post">
+                            <a style="cursor: pointer;" onclick="document.getElementById('value-{{ $value->id }}').submit();">Delete
+                            </a>
+
+                              <form action="{{ route('product.destroy', $value) }}" id="value-{{ $value->id }}" method="post">
                               @csrf
                               @method('delete')
-                              <button>Delete</button>
+                              
                               </form>
 
                             <a href="{{ route('product.edit', $value) }}">CHANGE</a>
