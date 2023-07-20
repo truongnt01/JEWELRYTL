@@ -62,28 +62,37 @@ table {
                 </tr>
             </thead>
             <tbody>
-                @foreach ($product as $item => $value)
-                    <tr>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->name }}</td>
-                        <td><img src="{{ asset('/image/'.$value->image) }}" alt=""></td>
-                        <td>{{ $value->description }}</td>
-                        <td>${{ $value->price }}</td>
-                        <td>
-                            <a style="cursor: pointer;" onclick="document.getElementById('value-{{ $value->id }}').submit();">Delete
-                            </a>
+              @if (count($product) >0)
+              @foreach ($product as $item => $value)
+              <tr>
+                  <td>{{ $value->id }}</td>
+                  <td>{{ $value->name }}</td>
+                  <td><img src="{{ asset('/image/'.$value->image) }}" alt=""></td>
+                  <td>{{ $value->description }}</td>
+                  <td>${{ $value->price }}</td>
+                  <td>
+                      <a style="cursor: pointer;" onclick="document.getElementById('value-{{ $value->id }}').submit();">Delete
+                      </a>
 
-                              <form action="{{ route('product.destroy', $value) }}" id="value-{{ $value->id }}" method="post">
-                              @csrf
-                              @method('delete')
-                              
-                              </form>
+                        <form action="{{ route('product.destroy', $value) }}" id="value-{{ $value->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        
+                        </form>
 
-                            <a href="{{ route('product.edit', $value) }}">CHANGE</a>
-                        </td>
-                    </tr>
-                @endforeach
+                      <a href="{{ route('product.edit', $value) }}">CHANGE</a>
+                  </td>
+              </tr>
+          @endforeach
+
+              @else
+              <p>Product does not exist</p>
+              @endif
+                
             </tbody> 
           </table>
+          <div>
+            {{ $product->links('Admin-1.pagination')}}
+          </div>
     </main>
 @endsection

@@ -15,8 +15,8 @@ class ProductsController extends Controller
     public function index()
     {
         $auth = Auth::user();
-
-        $product = products::query()->orderByDesc('id')->get();
+        $page = 10;
+        $product = products::latest()->paginate($page);
 
         return view(self::object . self::DOT . __FUNCTION__, ['product' => $product, 'auth' => $auth]);
     }

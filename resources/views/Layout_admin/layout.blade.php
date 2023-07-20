@@ -16,7 +16,7 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<a href="{{ url('admin') }}" class="brand">
 			<i class='bx bxs-smile'></i>
 			<span class="text">AdminHub</span>
 		</a>
@@ -46,9 +46,9 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="">
 					<i class='bx bxs-group' ></i>
-					<span class="text">Team</span>
+					<span class="text">User</span>
 				</a>
 			</li>
 		</ul>
@@ -81,7 +81,7 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Admin</a>
+			<a href="{{ url('admin') }}" class="nav-link">Admin</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">

@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +38,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('Admin-1.index');
     });
     Route::resource('/product', ProductsController::class);
+    
    
 });
 
