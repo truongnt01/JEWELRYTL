@@ -38,6 +38,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('Admin-1.index');
     });
     Route::resource('/product', ProductsController::class);
+    Route::get('/search', 'SearchController@search')->name('search');
     
    
 });

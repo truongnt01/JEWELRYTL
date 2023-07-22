@@ -57,6 +57,7 @@ table {
                     <th>NAME</th>
                     <th>IMAGE</th>
                     <th>DESCRIPTION</th>
+                    <th>CATEGORY</th>
                     <th>PRICE</th>
                     <th>ACTION</th>
                 </tr>
@@ -69,6 +70,7 @@ table {
                   <td>{{ $value->name }}</td>
                   <td><img src="{{ asset('/image/'.$value->image) }}" alt=""></td>
                   <td>{{ $value->description }}</td>
+                  <td>{{ $value->categories->name }}</td>
                   <td>${{ $value->price }}</td>
                   <td>
                       <a style="cursor: pointer;" onclick="document.getElementById('value-{{ $value->id }}').submit();">Delete

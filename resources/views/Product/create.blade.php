@@ -63,6 +63,13 @@
         <br><br>
         <label for="">Image: </label> <img src="" alt="" id="show_file"> <input type="file" name="image" accept="image/*" onchange="showFile(event)">
         <br><br>
+        <label for="">Categories: 
+        <select name="category" id="category">
+            @foreach ($categories as $categoryId => $categoryValue)
+                <option value="{{ $categoryValue->id }}">{{ $categoryValue->name }}</option>
+            @endforeach
+        </select>
+        <br><br>
         <label for="">Description: </label> <input type="text" name="description">
         <br><br>
         <label for="">Price:</label> <input type="text" name="price">

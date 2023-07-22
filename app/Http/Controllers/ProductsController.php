@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categories;
 use App\Models\products;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -16,14 +17,16 @@ class ProductsController extends Controller
     {
         $auth = Auth::user();
         $page = 10;
-        $product = products::latest()->paginate($page);
+       
+        $product = products::with('categories')->latest()->paginate($page);
 
-        return view(self::object . self::DOT . __FUNCTION__, ['product' => $product, 'auth' => $auth]);
+        return view(self::object . self::DOT . __FUNCTION__, ['product' => $product, 'auth' => $auth ]);
     }
 
     public function create()
     {
-        return view(self::object . self::DOT . __FUNCTION__);
+        $categories = categories::all();
+        return view(self::object . self::DOT . __FUNCTION__,['categories' => $categories]);
     }
 
     public function store(Request $request, products $product)
@@ -41,6 +44,7 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->image = $file_name;
         $product->description = $request->description;
+        $product->categories_id = $request->category;
         $product->price = $request->price;
 
         $product->save();
@@ -50,7 +54,8 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = products::findOrFail($id);
-        return view(self::object . self::DOT . __FUNCTION__,['product' => $product]);
+        $categories = categories::all();
+        return view(self::object . self::DOT . __FUNCTION__,['product' => $product, 'categories' => $categories]);
     }
 
     public function update(Request $request, products $product){
@@ -65,6 +70,7 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->image = $file_name;
         $product->description = $request->description;
+        $product->categories_id = $request->category;
         $product->price = $request->price;
         $product->save();
 

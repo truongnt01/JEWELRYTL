@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Console\View\Components\Choice;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,8 @@ class productsFactory extends Factory
             //
             'name' => $this->faker->name,
             'description' => $this->faker->address,
-            'price' => $this->faker->numberBetween(100,1000)
+            'price' => $this->faker->numberBetween(100,1000),
+            
         ];
     }
 }

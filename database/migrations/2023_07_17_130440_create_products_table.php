@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('description');
             $table->decimal('price', 8, 2);
-           
+            
            // Thêm các trường khác cho bảng product
            $table->timestamps();
 

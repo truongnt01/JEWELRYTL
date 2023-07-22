@@ -59,6 +59,14 @@
         <input type="hidden" name="hidden_product_image" value="{{ $product->image }}">
         <input type="file" name="image" accept="image/*" onchange="showFile(event)">
         <br><br>
+        <label for="">Categories: 
+            <select name="category" id="category">
+                @foreach ($categories as $categoryId => $categoryValue)
+                    <option value="{{ $categoryValue->id }}" {{ (isset($product->categories_id) && $product->categories_id == $categoryValue->id) ? 'select' : 
+                    '' }}>{{ $categoryValue->name }}</option>
+                @endforeach
+            </select>   
+        <br><br>
         <label for="">Description: </label> <input type="text" name="description" value="{{ $product->description }}">
         <br><br>
         <label for="">Price:</label> <input type="text" name="price" value="{{ $product->price }}">
