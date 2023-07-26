@@ -34,7 +34,7 @@ class ProductsController extends Controller
         $product = new products();
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:products',
             'image' => 'required|image|mimes:png,jpg|max:3060',
             'price' => 'required',
         ]);

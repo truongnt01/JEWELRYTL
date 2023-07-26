@@ -30,19 +30,19 @@
 			<li>
 				<a href="{{ route('product.index') }}">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Product</span>
+					<span class="text">Products</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="{{ route('category.index') }}">
 					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Analytics</span>
+					<span class="text">Categories</span>
 				</a>
 			</li>
 			<li>
 				<a href="#">
 					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Message</span>
+					<span class="text">Attributes</span>
 				</a>
 			</li>
 			<li>

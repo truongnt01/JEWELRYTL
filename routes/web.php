@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\CallProductAPI;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\User;
 
@@ -21,6 +23,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/api/product', [CallProductAPI::class, 'index']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -38,13 +42,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('Admin-1.index');
     });
     Route::resource('/product', ProductsController::class);
-    Route::get('/search', 'SearchController@search')->name('search');
-    
-   
+    Route::resource('/category', CategoriesController::class);
 });
 
-Route::middleware(['auth','role:user'])->group(function (){
-    Route::get('/user', function (){
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/user', function () {
         return view('dashboard');
     });
 });
