@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CallProductAPI;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\User;
 
@@ -18,10 +19,6 @@ use Illuminate\Foundation\Auth\User;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/api/product', [CallProductAPI::class, 'index']);
 
@@ -41,8 +38,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', function () {
         return view('Admin-1.index');
     });
+    Route::get('/', function () {
+        return view('Admin-1.index');
+    });
     Route::resource('/product', ProductsController::class);
     Route::resource('/category', CategoriesController::class);
+    Route::resource('/attribute', AttributeController::class);
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {

@@ -63,6 +63,25 @@
         <br><br>
         <label for="">Image: </label> <img src="" alt="" id="show_file"> <input type="file" name="image" accept="image/*" onchange="showFile(event)">
         <br><br>
+        <label for="">Color</label>
+        @foreach ($color as $value)
+            <input type="checkbox" name="id_attribute[]" value="{{ $value->id }}">
+            <span class="glyphicon glyphicon-ok" style="color: {{ $value->value }}"></span>
+        @endforeach
+        <br><br>
+        <label for="">Material</label>
+        @foreach ($material as $value)
+            <input type="checkbox" name="id_attribute[]"  value="{{ $value->id }}">
+            {{ $value->value }}
+        @endforeach   
+            
+        <br><br>
+        <label for="">Designs</label>
+        @foreach ($designs as $value)
+            <input type="checkbox" name="id_attribute[]"  value="{{ $value->id }}">
+            {{ $value->value }}
+        @endforeach   
+        <br><br>
         <label for="">Categories: 
         <select name="category" id="category">
             @foreach ($categories as $categoryId => $categoryValue)
